@@ -1,8 +1,9 @@
-FROM hypriot/rpi-alpine-scratch
+FROM container4armhf/armhf-alpine
 
-RUN echo "http://dl-3.alpinelinux.org/alpine/v3.3/community/" >> /etc/apk/repositories &&\
+RUN echo "http://dl-3.alpinelinux.org/alpine/v3.5/community/" >> /etc/apk/repositories &&\
 	apk update && \
-	apk add openjdk7-jre-base openssl &&\
+	apk add openjdk8-jre-base openssl &&\
+        rm -rf /var/cache/apk/* && \
 	mkdir /data /data/world
 
 COPY server.properties /data/
